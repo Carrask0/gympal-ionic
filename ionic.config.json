@@ -1,0 +1,7 @@
+{
+  "name": "gympal",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular-standalone"
+}
