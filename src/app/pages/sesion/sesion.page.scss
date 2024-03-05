@@ -1,0 +1,14 @@
+.sesion-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.sesion-header {
+    margin: 5px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+}

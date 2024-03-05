@@ -1,0 +1,87 @@
+.main-page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin: 0 auto;
+    display: block;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.principal-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.area-sesiones{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 20px;
+    align-items: flex-start;
+    align-self: flex-start;
+}
+
+.title-sesiones {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.boton-sesion {
+    //set background color
+    --background: var(--teal500);
+    //make the button bigger
+    --padding-start: 20px;
+    --padding-end: 20px;
+    --padding-top: 10px;
+    --padding-bottom: 10px;
+
+    //set the font size
+    font-size: x-large;
+
+    //set the font weight
+    font-weight: bold;
+
+    //set the text color
+    --color: var(--grey700);
+
+    //set border radius
+    --border-radius: 20px;
+}
+
+.boton-analiticas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 50%;
+
+    //center horizontally
+    margin: 0 auto;
+
+    margin-top: 50px;
+
+    //set background color
+    background-color: var(--teal500);
+
+    //round the corners
+    border-radius: 20px;
+
+    //set the font size
+    font-size: x-large;
+
+
+}

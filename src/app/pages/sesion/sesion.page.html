@@ -1,13 +1,13 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>sesion</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">sesion</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="sesion-page">
+    <div class="sesion-header">
+      <ion-icon name="arrow-back"></ion-icon>
+      <ion-text>
+        <p>{{session.sessionName}}</p>
+      </ion-text>
+      <ion-text>
+        <p>{{date}}</p>
+      </ion-text>
+    </div>
+  </div>
 </ion-content>

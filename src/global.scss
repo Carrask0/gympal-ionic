@@ -24,3 +24,23 @@
 @import "@ionic/angular/css/text-alignment.css";
 @import "@ionic/angular/css/text-transformation.css";
 @import "@ionic/angular/css/flex-utils.css";
+
+$teal500: #39AFAC;
+$teal600: #285E61;
+$grey700: #2D3748;
+
+
+
+.text-title-white{
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+.text-title-grey{
+    color: var(--grey700);
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: x-large;
+}
