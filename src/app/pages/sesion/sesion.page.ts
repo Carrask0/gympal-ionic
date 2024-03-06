@@ -18,6 +18,10 @@ export class SesionPage implements OnInit {
 
   constructor() { }
 
+  goBack(){
+    window.history.back();
+  }
+
   ngOnInit() {
 
     this.editMode = false;

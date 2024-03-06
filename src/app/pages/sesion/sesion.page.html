@@ -1,13 +1,50 @@
 <ion-content [fullscreen]="true">
   <div class="sesion-page">
     <div class="sesion-header">
-      <ion-icon name="arrow-back"></ion-icon>
+      <ion-icon name="arrow-back" click="goBack()"></ion-icon>
       <ion-text>
-        <p>{{session.sessionName}}</p>
+        <p class="text-title-white">{{session.sessionName}}</p>
       </ion-text>
       <ion-text>
-        <p>{{date}}</p>
+        <p class="text-white">{{date}}</p>
       </ion-text>
     </div>
+
+    <div class="stats-area">
+      <div class="stat-item">
+        <ion-text><p class="stat-item-value">{{session.puntos}}</p></ion-text>
+        <ion-text><p class="stat-item-label">puntos</p></ion-text>
+      </div>
+      <div class="stat-item">
+        <ion-text><p class="stat-item-value">{{session.kgsMovidos}}</p></ion-text>
+        <ion-text><p class="stat-item-label">kgs movidos</p></ion-text>
+      </div>
+      <div class="stat-item">
+        <ion-text><p class="stat-item-value">{{session.kcalsQuemadas}}</p></ion-text>
+        <ion-text><p class="stat-item-label">kcals</p></ion-text>
+      </div>
+    </div>
+
+    <div class="exercises-area">
+      <div class="exercises-header">
+        <div class="exercises-header-left">
+          <ion-text class="text-title-white">Ejercicios</ion-text>
+          <ion-icon name="create" class="create-exercise-button"></ion-icon>
+        </div>
+        <ion-icon name="create"></ion-icon>
+      </div>
+      <ion-list class="exercises-list">
+        <ion-item *ngFor="let exercise of session.exercises" class="exercise-entry">
+            <div class="exercise-entry-left">
+              <ion-text class="text-white">{{exercise.exerciseName}}</ion-text>
+              <ion-text class="text-white">{{exercise.kgs}}kgs {{exercise.sets}}x{{exercise.reps}}</ion-text>
+            </div>
+            <div class="exercise-entry-right">
+              <ion-icon name="trash"></ion-icon>
+            </div>
+        </ion-item>
+      </ion-list>
+    </div>
+
   </div>
 </ion-content>
