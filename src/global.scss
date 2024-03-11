@@ -50,3 +50,10 @@ $grey700: #2D3748;
     font-weight: bold;
     font-size: x-large;
 }
+
+.page {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--grey700);
+}

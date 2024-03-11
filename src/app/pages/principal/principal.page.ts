@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { addIcons } from 'ionicons';
+import { addCircle, barChart } from 'ionicons/icons';
 
 
 @Component({
@@ -15,7 +17,9 @@ export class PrincipalPage implements OnInit {
 
   user: any //TODO: create user model
 
-  constructor() { }
+  constructor() { 
+    addIcons({addCircle, barChart});
+  }
 
   ngOnInit() {
 

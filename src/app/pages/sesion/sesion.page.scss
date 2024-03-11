@@ -1,10 +1,3 @@
-.sesion-page {
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    background-color: var(--grey700);
-}
-
 .sesion-header {
     margin: 5px;
     display: flex;
@@ -25,6 +18,11 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+.icon-arrow-back{
+    color: var(--teal500);
+    font-size: 2em;
 }
 
 .stat-item-value{
@@ -52,6 +50,18 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.icon-add-exercise {
+    color: var(--teal500);
+    font-size: 1.5em;
+    margin-left: 16px;
+}
+
+.icon-edit-session {
+    color: var(--teal500);
+    font-size: 1.8em;
+    margin-right: 24px;
 }
 
 .exercises-header-left{
@@ -83,4 +93,9 @@
 
 .exercise-entry-right {
     margin-left:40px;
+}
+
+.icon-trash{
+    color: var(--teal500);
+    font-size: 1.5em;
 }

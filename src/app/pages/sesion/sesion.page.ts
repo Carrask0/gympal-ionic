@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { arrowBack, create, trash, addCircle } from 'ionicons/icons';import { addIcons } from 'ionicons';
+
 
 @Component({
   selector: 'app-sesion',
@@ -16,7 +18,9 @@ export class SesionPage implements OnInit {
   editMode: boolean = false;
   date: string = "01/01/2021";
 
-  constructor() { }
+  constructor() { 
+    addIcons({arrowBack, create, trash, addCircle});
+  }
 
   goBack(){
     window.history.back();
