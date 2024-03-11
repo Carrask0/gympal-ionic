@@ -23,7 +23,6 @@ export class VerticalBarChartComponent  implements OnInit {
 
     @Input() view: any;
     @Input() graphData: any;
-    single: any[] = [];
 
     colorScheme: any = {
       domain: ['#319795', '#2C7A7B', '#38B2AC', '#AAAAAA']
