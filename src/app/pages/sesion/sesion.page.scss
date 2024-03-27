@@ -20,11 +20,6 @@
     align-items: center;
 }
 
-.icon-arrow-back{
-    color: var(--teal500);
-    font-size: 2em;
-}
-
 .stat-item-value{
     font-size: 1.5em;
     font-weight: bold;
@@ -56,12 +51,18 @@
     color: var(--teal500);
     font-size: 1.5em;
     margin-left: 16px;
+    &:hover {
+        color: white;
+    }
 }
 
 .icon-edit-session {
     color: var(--teal500);
     font-size: 1.8em;
     margin-right: 24px;
+    &:hover {
+        color: white;
+    }
 }
 
 .exercises-header-left{
@@ -98,4 +99,26 @@
 .icon-trash{
     color: var(--teal500);
     font-size: 1.5em;
+    &:hover {
+        color: white;
+    }
 }
+
+.exercise-accept-edit-area{
+    align-self: center;
+    margin-top: 30px;
+    margin-left: 16px;
+    cursor: pointer;
+}
+
+.exercise-accept-edit-button {
+    --background: var(--teal500);
+    --color: var(--grey700);
+    --border-radius: 20px;
+    font-size: 1.2em;
+    font-weight: bold;
+    &:hover {
+        --background: white;
+    }
+}
+

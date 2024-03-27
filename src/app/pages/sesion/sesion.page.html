@@ -1,12 +1,14 @@
 <ion-content [fullscreen]="true">
   <div class="page">
     <div class="sesion-header">
-      <ion-icon name="arrow-back" class="icon-arrow-back" click="goBack()"></ion-icon>
+      <div class="">
+        <ion-icon name="arrow-back" class="arrow-back" (click)="onClickArrowBack()" routerLink="/principal"></ion-icon>
+      </div>
       <ion-text>
         <p class="text-title-white">{{session.sessionName}}</p>
       </ion-text>
       <ion-text>
-        <p class="text-white">{{date}}</p>
+        <p class="text-white">{{session.date}}</p>
       </ion-text>
     </div>
 
@@ -29,9 +31,9 @@
       <div class="exercises-header">
         <div class="exercises-header-left">
           <ion-text class="text-title-white">Ejercicios</ion-text>
-          <ion-icon name="add-circle" class="icon-add-exercise"></ion-icon>
+          <ion-icon *ngIf="editMode" name="add-circle" (click)="onClickAddExercise()"  class="icon-add-exercise"></ion-icon>
         </div>
-        <ion-icon name="create" class="icon-edit-session"></ion-icon>
+        <ion-icon *ngIf="!editMode" (click)="onClickEditSession()" name="create" class="icon-edit-session"></ion-icon>
       </div>
       <ion-list class="exercises-list">
         <ion-item *ngFor="let exercise of session.exercises" class="exercise-entry">
@@ -40,10 +42,13 @@
               <ion-text class="text-white">{{exercise.kgs}}kgs {{exercise.sets}}x{{exercise.reps}}</ion-text>
             </div>
             <div class="exercise-entry-right">
-              <ion-icon name="trash" class="icon-trash" ></ion-icon>
+              <ion-icon *ngIf="editMode" (click)="onClickDeleteExercise(exercise)" name="trash" class="icon-trash" ></ion-icon>
             </div>
         </ion-item>
       </ion-list>
+      <div class="exercise-accept-edit-area">
+        <ion-button class="exercise-accept-edit-button" *ngIf="editMode" (click)="onClickAcceptEdit()">Terminar</ion-button>
+      </div>
     </div>
 
   </div>

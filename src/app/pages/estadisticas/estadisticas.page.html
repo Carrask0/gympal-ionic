@@ -1,17 +1,40 @@
 <ion-content [fullscreen]="true">
   <div class="page">
-    <div class="arrow-back">
-      <ion-icon name="arrow-back"></ion-icon>
+    <div class="arrow-back-area">
+      <ion-icon class="arrow-back" name="arrow-back" routerLink="/principal"></ion-icon>
     </div>
     <div class="statistics-content">
-      <p class="text-title-white">Estadísticas Generales</p>
+      <p class="text-title-white">Volumen total</p>
+      <div class="graph-area">
+        <div class="graph">
+          <app-line-chart
+            [view] = "graphSize"  
+            [graphData] = "graphData"
+          ></app-line-chart>
+        </div>
+      </div>
     </div>
-    <div class="graph">
 
-      <app-line-chart
-        [view] = "graphSize"  
-        [graphData] = "graphData"
-      ></app-line-chart>
+    <div class="exercise-area">
+      <div class="exercise-area-header">
+        <p class="text-title-white">Ejercicios</p>
+
+        <ion-item>
+          <ion-select class="custom" placeholder="Ordenar por:" interface="popover" aria-label="Ordenar por" class="select">
+            <ion-select-option value="peso-max">Peso máximo</ion-select-option>
+            <ion-select-option value="grupo-muscular">Grupo muscular</ion-select-option>
+            <ion-select-option value="orden-alfa">Orden alfabético</ion-select-option>
+            <ion-select-option value="volumen-medio">Volumen medio</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+      </div>
+      <div class="exercise-list">
+        @for (exercise of exercises; track exercise) {
+          <p class="exercise-button" (click)="onClickExercise(exercise.exerciseId)">{{exercise.exerciseName}}</p>
+        }
+      </div>
     </div>
+
   </div>
 </ion-content>

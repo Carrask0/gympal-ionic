@@ -1,13 +1,33 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>buscar-ejercicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">buscar-ejercicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="page">
+    <div class="arrow-back-area">
+      <ion-icon class="arrow-back" name="arrow-back" (click)="onClickArrowBack()" routerLink="/principal"></ion-icon>
+    </div>
+    <div class="find-exercise-content">
+      <p class="text-title-white">Añadir ejercicio</p>
+
+      <ion-item>
+        <ion-select placeholder="Ordenar por:" interface="popover" aria-label="Ordenar por" class="select">
+          <ion-select-option value="peso-max">Peso máximo</ion-select-option>
+          <ion-select-option value="grupo-muscular">Grupo muscular</ion-select-option>
+          <ion-select-option value="orden-alfa">Orden alfabético</ion-select-option>
+          <ion-select-option value="volumen-medio">Volumen medio</ion-select-option>
+        </ion-select>
+      </ion-item>
+
+      <ion-searchbar class="custom" placeholder="Buscar ejercicio"></ion-searchbar>
+
+      
+      <ion-list class="exercises-list">
+        <ion-item *ngFor="let exercise of exercises" class="exercise-entry">
+          <div class="exercise-item">
+            <p>{{exercise}}</p>
+          </div>
+        </ion-item>
+      </ion-list>
+
+    </div>
+
+
+  </div>
 </ion-content>

@@ -1,0 +1,42 @@
+
+.ejercicio-main-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ejercicio-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.ejercicio-stats{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    width: 90vw;
+}
+
+.ejercicio-stats-item{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.ejercicio-stats-value{
+    font-size: 1.5em;
+    font-weight: bold;
+    color: var(--teal500);
+    padding: 0;
+    margin: 0;
+}
+
+.ejercicio-stats-label{
+    font-size: 1em;
+    color: white;
+}

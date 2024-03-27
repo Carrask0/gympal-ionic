@@ -15,12 +15,17 @@ export class LineChartComponent  implements OnInit {
   showLabels: boolean = false;
   animations: boolean = true;
   xAxis: boolean = true;
-  yAxis: boolean = false;
+  yAxis: boolean = true;
   showYAxisLabel: boolean = false;
   showXAxisLabel: boolean = false;
   xAxisLabel: string = 'Year';
   yAxisLabel: string = 'Population';
   timeline: boolean = true;
+  showGridLines: boolean = false;
+  scheme: any = {
+    domain: ['#319795', '#2C7A7B', '#38B2AC', '#AAAAAA']
+  };
+  autoScale: boolean = true;
 
   @Input() view: any;
   @Input() graphData: any;

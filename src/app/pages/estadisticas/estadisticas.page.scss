@@ -1,8 +1,41 @@
-.arrow-back{
-    display: block;
-}
+
 
 .statistics-content{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
 }
+
+.exercise-area {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.exercise-area-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    //baseline
+    align-items: center;
+}
+
+
+.exercise-button{
+    color: var(--grey700);
+    //hover effect
+    &:hover {
+        background-color: white;
+    }
+    font-weight: bold;
+    font-size: 1.5em;
+    margin-left: 16px;
+    border-radius: 20px;
+    padding: 10px;
+    background-color: var(--teal500);
+    text-align: center;
+}
+

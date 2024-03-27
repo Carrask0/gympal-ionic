@@ -38,6 +38,10 @@
 .icon-add-circle {
     color: var(--teal500);
     margin-left: 16px;
+    cursor: pointer;
+    &:hover {
+        color: white;
+    }
 }
 
 .boton-sesion {
@@ -48,6 +52,9 @@
     --padding-end: 20px;
     --padding-top: 10px;
     --padding-bottom: 10px;
+    &:hover {
+        --background: white;
+    }
 
     //set the font size
     font-size: x-large;
@@ -83,9 +90,17 @@
 
     //set the font size
     font-size: x-large;
+
+    //change mouse cursor when hovering
+    cursor: pointer;
+
+    &:hover {
+        background-color: white;
+    }
 }
 
 .icon-bar-chart {
     color: var(--grey700);  
     margin-bottom: 16px;
 }
+

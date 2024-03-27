@@ -1,0 +1,60 @@
+.find-exercise-content{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+ion-searchbar.custom {
+    
+    --background: var(--grey700);
+    --color: var(--teal500);
+    --placeholder-color: var(--teal500);
+    --icon-color: var(--teal500);
+    --clear-button-color: var(--teal500);
+
+    //add border
+    border: 1px solid var(--teal500);
+    border-radius: 10px;
+    width: 80vw;
+
+    margin-top: 20px;
+}
+
+ion-select {
+    --background: var(--teal500);
+    --color: var(--grey700);
+    --placeholder-color: var(--grey700);
+    --icon-color: var(--grey700);
+    --border-radius: 10px;
+    --placeholder-opacity: 1;
+
+    /* Centering the text */
+    --padding-start: 20px; /* Adjust as needed */
+    --padding-end: 20px; /* Adjust as needed */
+
+    width: 80vw;
+    margin-top: 20px;
+}
+
+ion-select::part(text) {
+    color: var(--grey700);
+    opacity: 1;
+    margin: 10px;
+    align-self: center;
+}
+
+ion-select::part(icon) {
+    color: var(--grey700);
+    opacity: 1;
+}
+
+.exercise-item {
+    background-color: var(--teal500);
+    color: var(--grey700);
+    border-radius: 20px; /* Increased border radius */
+    margin-top: 20px;
+    width: 80vw;
+    text-align: center; /* Center the text */
+    font-weight: bold; /* Make the text bold */
+}

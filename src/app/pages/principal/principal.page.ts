@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { addIcons } from 'ionicons';
 import { addCircle, barChart } from 'ionicons/icons';
+import { NavigationExtras, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -11,14 +13,26 @@ import { addCircle, barChart } from 'ionicons/icons';
   templateUrl: './principal.page.html',
   styleUrls: ['./principal.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule]
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule]
 })
 export class PrincipalPage implements OnInit {
 
   user: any //TODO: create user model
 
-  constructor() { 
+  constructor(private router: Router) { 
     addIcons({addCircle, barChart});
+  }
+
+  onClickAddSession() {
+    localStorage.setItem('session-editMode', 'true');
+    localStorage.setItem('session-id', '-1');
+    this.router.navigate(['/sesion']);
+  }
+
+  onClickSession(sessionId: number) {
+    localStorage.setItem('session-id', sessionId.toString());
+    localStorage.setItem('session-editMode', 'false');
+    this.router.navigate(['/sesion']);
   }
 
   ngOnInit() {
@@ -47,9 +61,6 @@ export class PrincipalPage implements OnInit {
           name: "Sesión 3"
         }
       ]
-
-
     }
   }
-
 }

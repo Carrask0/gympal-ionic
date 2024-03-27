@@ -1,13 +1,39 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>estadisticas-ejercicio</ion-title>
-  </ion-toolbar>
-</ion-header>
-
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">estadisticas-ejercicio</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <div class="page">
+    <div class="arrow-back-area">
+      <ion-icon class="arrow-back" size="large" name="arrow-back" (click)="onClickBack()"></ion-icon>
+    </div>
+    <div class="ejercicio-main-content">
+      <p class="text-white">Estadisticas</p>
+      <p class="text-title-white">{{ejercicio.nombre}}</p>
+
+      <div class="ejercicio-stats">
+        <div class="ejercicio-stats-item">
+          <p class="ejercicio-stats-value">12650</p>
+          <p class="ejercicio-stats-label">Kgs movidos</p>
+        </div>
+        <div class="ejercicio-stats-item">
+          <p class="ejercicio-stats-value">120kgs</p>
+          <p class="ejercicio-stats-label">Máxima esperada</p>
+        </div>
+      </div>
+
+      <div>
+        <app-line-chart
+            [view] = "graphSize"  
+            [graphData] = "transformData(ejercicio.repeticionMaxima, 'Repeticion máxima')"
+          ></app-line-chart>
+          <app-line-chart
+            [view] = "graphSize"  
+            [graphData] = "transformData(ejercicio.pesoEfectivo, 'Peso efectivo')"
+          ></app-line-chart>
+          <app-line-chart
+            [view] = "graphSize"  
+            [graphData] = "transformData(ejercicio.volumenTotal, 'Volumen por sesión')"
+          ></app-line-chart>
+      </div>
+
+
+    </div>
+  </div>
 </ion-content>
