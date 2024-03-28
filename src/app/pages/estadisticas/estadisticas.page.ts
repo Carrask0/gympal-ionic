@@ -8,7 +8,6 @@ import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { Chart } from 'chart.js';
 import { ChartConfiguration, ChartOptions } from 'chart.js';
 import { BaseChartDirective } from 'ng2-charts';
 
@@ -27,7 +26,6 @@ export class EstadisticasPage implements OnInit{
 
 
   //data
-  graphSize: any = [window.innerWidth * 0.8, window.innerHeight * 0.5];
   exercises: any[] = [
     {
       "exerciseId": "1",
@@ -123,23 +121,54 @@ export class EstadisticasPage implements OnInit{
       'April',
       'May',
       'June',
-      'July'
+      'July',
+      'August',
+      'September',
+      'October',
+      'November',
+      'December'
     ],
     datasets: [
       {
-        data: [ 65, 59, 80, 81, 56, 55, 40 ],
-        label: 'Series A',
-        fill: true,
+        data: [],
+        label: 'Total volume',
+        fill: false, // Set fill to false to hide the area below the line
         tension: 0.5,
-        borderColor: 'black',
-        backgroundColor: 'rgba(255,0,0,0.3)'
+        borderColor: '#39AFAC', // Change the border color to match the area below
+        backgroundColor: '#39AFAC' // Keep the background color the same
       }
     ]
   };
+  
   public lineChartOptions: ChartOptions<'line'> = {
+    scales: {
+      y: {
+        beginAtZero: true
+      }
+    },
     responsive: false
   };
-  public lineChartLegend = true;
+  public lineChartLegend = false;
+
+  extractValues(graphData: any[]): number[] {
+    const output: number[] = [];
+  
+    // Check if graphData exists and has at least one item
+    if (graphData && graphData.length > 0) {
+      const series = graphData[0]?.series;
+  
+      // Iterate over the series array and extract the values
+      if (series && series.length > 0) {
+        for (const data of series) {
+          if (data?.value !== undefined) {
+            output.push(data.value);
+          }
+        }
+      }
+    }
+  
+    return output;
+  }
 
   onClickExercise(ejercicioId: number) {
     localStorage.setItem('ejercicioId', ejercicioId.toString());
@@ -152,19 +181,6 @@ export class EstadisticasPage implements OnInit{
 
   ngOnInit() {
     console.log(this.graphData);
-
-    const config = {
-      type: 'line',
-      data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40],
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-          }]
-        }
-    };
+    this.lineChartData.datasets[0].data = this.extractValues(this.graphData);
   }
 }
