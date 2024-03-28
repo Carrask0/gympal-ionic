@@ -1,0 +1,26 @@
+<div class="modal">
+  <div class="modal-header">
+    <p class="text-title-white">Añadir ejercicio</p>
+    <ion-icon name="close" class="close-icon" (click)="onClickCloseIcon()"></ion-icon>
+  </div>
+
+  <div class="modal-content">
+    <div class="modal-content-item">
+      <ion-input class="custom" placeholder="0" ></ion-input>
+      <p class="text-white">Peso</p>
+    </div>
+    <div class="modal-content-item">
+      <ion-input class="custom" placeholder="0" ></ion-input>
+      <p class="text-white">Repeticiones</p>
+    </div>
+    <div class="modal-content-item">
+      <ion-input class="custom" placeholder="0" ></ion-input>
+      <p class="text-white">Series</p>
+    </div>
+  </div>
+
+  <div class="modal-footer">
+    <ion-button class="custom" (click)="onClickAddExercise()">Añadir</ion-button>
+  </div>
+
+</div>

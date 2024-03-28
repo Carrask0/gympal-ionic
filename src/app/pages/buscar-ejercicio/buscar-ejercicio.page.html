@@ -21,13 +21,20 @@
       <ion-list class="exercises-list">
         <ion-item *ngFor="let exercise of exercises" class="exercise-entry">
           <div class="exercise-item">
-            <p>{{exercise}}</p>
+            <p (click)="openDialog()" >{{exercise}}</p>
           </div>
         </ion-item>
       </ion-list>
-
     </div>
-
-
   </div>
+
+
+<script>
+  var modal = document.querySelector('ion-modal');
+
+  function dismiss() {
+    modal.dismiss();
+  }
+</script>
+
 </ion-content>

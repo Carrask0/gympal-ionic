@@ -1,0 +1,67 @@
+.modal {
+    width: 320px;
+    height: 350px;
+    background-color: var(--grey700); /* Set background color to grey700 */
+    border: 2px solid var(--teal500); /* Set border to 2px solid teal500 */
+    border-radius: 5px; /* Set border radius to 5px */
+    overflow: hidden; /* Clip any content that overflows the modal */
+}
+
+.modal-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 20px; /* Add margin */
+}
+
+.close-icon {
+    font-size: 24px; /* Increase font size */
+    color: var(--teal500); /* Set color to teal */
+}
+
+.modal-content {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-left:20px;
+    margin-right:20px;
+}
+
+.modal-content-item {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center; /* Center items horizontally */
+}
+
+.modal-content-item p {
+    color: white; /* Set text color to white */
+    font-weight: bold; /* Set font weight to bold */
+    text-align: center; /* Center text content horizontally */
+}
+
+
+.modal-content-item ion-input {
+    border: 2px solid var(--teal500); /* Set border to 2px solid teal500 */
+    border-radius: 10px; /* Set border radius to 10px */
+    color: white; /* Set text color to white */
+    text-align: center; /* Center text content horizontally */
+    width: 50px;
+}
+
+/* Modal footer */
+.modal-footer {
+    display: flex;
+    justify-content: center; /* Center align content */
+}
+
+/* Accept button */
+.modal-footer ion-button.custom {
+    --background: var(--teal500); /* Set background color to teal */
+    --color: var(--grey700); /* Set text color to grey */
+    font-weight: bold;
+    margin-top: 20px;
+}
