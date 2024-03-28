@@ -5,13 +5,14 @@
     </div>
     <div class="statistics-content">
       <p class="text-title-white">Volumen total</p>
-      <div class="graph-area">
-        <div class="graph">
-          <app-line-chart
-            [view] = "graphSize"  
-            [graphData] = "graphData"
-          ></app-line-chart>
-        </div>
+
+      <div style="display: block;">
+        <canvas baseChart width="400" height="400"
+          [type]="'line'"
+          [data]="lineChartData"
+          [options]="lineChartOptions"
+          [legend]="lineChartLegend">
+        </canvas>
       </div>
     </div>
 

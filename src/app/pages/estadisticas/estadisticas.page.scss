@@ -23,6 +23,32 @@
     align-items: center;
 }
 
+ion-select {
+    --background: var(--teal500);
+    --color: var(--grey700);
+    --placeholder-color: var(--grey700);
+    --icon-color: var(--grey700);
+    --border-radius: 20px;
+    --placeholder-opacity: 1;
+
+    /* Centering the text */
+    --padding-start: 20px; /* Adjust as needed */
+    --padding-end: 20px; /* Adjust as needed */
+}
+
+ion-select::part(text) {
+    color: var(--grey700);
+    opacity: 1;
+    margin: 10px;
+    align-self: center;
+    font-weight: bold;
+}
+
+ion-select::part(icon) {
+    color: var(--grey700);
+    opacity: 1;
+}
+
 
 .exercise-button{
     color: var(--grey700);

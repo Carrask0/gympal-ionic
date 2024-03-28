@@ -67,6 +67,9 @@
 
     //set border radius
     --border-radius: 20px;
+
+    //remove inherited uppercase
+    text-transform: initial;
 }
 
 .boton-analiticas {

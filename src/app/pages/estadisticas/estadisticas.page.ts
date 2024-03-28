@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -8,6 +8,10 @@ import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
+import { Chart } from 'chart.js';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+
 
 
 
@@ -16,12 +20,14 @@ import { Router } from '@angular/router';
   templateUrl: './estadisticas.page.html',
   styleUrls: ['./estadisticas.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, VerticalBarChartComponent, LineChartComponent, RouterModule]
+  imports: [IonicModule, CommonModule, FormsModule, VerticalBarChartComponent, LineChartComponent, RouterModule, BaseChartDirective],
 })
-export class EstadisticasPage implements OnInit {
+export class EstadisticasPage implements OnInit{
+  title = 'ng2-charts-demo';
 
+
+  //data
   graphSize: any = [window.innerWidth * 0.8, window.innerHeight * 0.5];
-
   exercises: any[] = [
     {
       "exerciseId": "1",
@@ -44,9 +50,6 @@ export class EstadisticasPage implements OnInit {
       "exerciseName": "Press militar",
     },
   ];
-
-  
-
   graphData: any[] = [
     {
       "name": "Volumen total",
@@ -111,18 +114,57 @@ export class EstadisticasPage implements OnInit {
     }
   ];
 
+  //ngdata
+  public lineChartData: ChartConfiguration<'line'>['data'] = {
+    labels: [
+      'January',
+      'February',
+      'March',
+      'April',
+      'May',
+      'June',
+      'July'
+    ],
+    datasets: [
+      {
+        data: [ 65, 59, 80, 81, 56, 55, 40 ],
+        label: 'Series A',
+        fill: true,
+        tension: 0.5,
+        borderColor: 'black',
+        backgroundColor: 'rgba(255,0,0,0.3)'
+      }
+    ]
+  };
+  public lineChartOptions: ChartOptions<'line'> = {
+    responsive: false
+  };
+  public lineChartLegend = true;
+
   onClickExercise(ejercicioId: number) {
     localStorage.setItem('ejercicioId', ejercicioId.toString());
     this.router.navigate(['/estadisticas-ejercicio']);
   }
 
   constructor(private router: Router) { 
-
     addIcons({arrowBack});
   }
 
   ngOnInit() {
     console.log(this.graphData);
-  }
 
+    const config = {
+      type: 'line',
+      data: {
+        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+        datasets: [{
+          label: 'My First Dataset',
+          data: [65, 59, 80, 81, 56, 55, 40],
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 0.1
+          }]
+        }
+    };
+  }
 }
