@@ -19,18 +19,33 @@
       </div>
 
       <div>
-        <app-line-chart
-            [view] = "graphSize"  
-            [graphData] = "transformData(ejercicio.repeticionMaxima, 'Repeticion máxima')"
-          ></app-line-chart>
-          <app-line-chart
-            [view] = "graphSize"  
-            [graphData] = "transformData(ejercicio.pesoEfectivo, 'Peso efectivo')"
-          ></app-line-chart>
-          <app-line-chart
-            [view] = "graphSize"  
-            [graphData] = "transformData(ejercicio.volumenTotal, 'Volumen por sesión')"
-          ></app-line-chart>
+        <div class="graph-container" style="display: block;">
+          <canvas baseChart width="350" height="100"
+            [type]="'line'"
+            [data]="repMaxLineChart"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+          </canvas>
+          <p class="text-title-white">Repeticion máxima</p>
+        </div>
+        <div class="graph-container" style="display: block;">
+          <canvas baseChart width="350" height="100"
+            [type]="'line'"
+            [data]="pesoEfectivoLineChart"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+          </canvas>
+          <p class="text-title-white">Peso efectivo</p>
+        </div>
+        <div class="graph-container" style="display: block;">
+          <canvas baseChart width="350" height="100"
+            [type]="'line'"
+            [data]="volumenTotalLineChart"
+            [options]="lineChartOptions"
+            [legend]="lineChartLegend">
+          </canvas>
+          <p class="text-white">Volumen por sesión</p>
+        </div>
       </div>
 
 

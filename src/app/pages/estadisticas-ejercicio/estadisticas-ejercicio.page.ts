@@ -3,14 +3,17 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { Router } from '@angular/router';
-import { LineChartComponent } from 'src/app/common/line-chart/line-chart.component';
+import { ChartConfiguration, ChartOptions } from 'chart.js';
+import { BaseChartDirective } from 'ng2-charts';
+import { addIcons } from 'ionicons';
+import { arrowBack } from 'ionicons/icons';
 
 @Component({
   selector: 'app-estadisticas-ejercicio',
   templateUrl: './estadisticas-ejercicio.page.html',
   styleUrls: ['./estadisticas-ejercicio.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, LineChartComponent]
+  imports: [IonicModule, CommonModule, FormsModule, BaseChartDirective]
 })
 export class EstadisticasEjercicioPage implements OnInit {
 
@@ -18,7 +21,6 @@ export class EstadisticasEjercicioPage implements OnInit {
   ejercicioId: number = 0;
   kgsMovidos: number = 0;
   expectedMax: number = 0;
-  graphSize: any = [window.innerWidth * 0.8, window.innerHeight * 0.2];
 
   ejercicios = [
     {
@@ -285,6 +287,60 @@ export class EstadisticasEjercicioPage implements OnInit {
     }
   ]
 
+    // Graphs
+    //ngdata
+    public repMaxLineChart: ChartConfiguration<'line'>['data'] = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          label: 'Repeticion máxima',
+          fill: false, // Set fill to false to hide the area below the line
+          tension: 0.5,
+          borderColor: '#39AFAC', // Change the border color to match the area below
+          backgroundColor: '#39AFAC' // Keep the background color the same
+        }
+      ]
+    };
+    public pesoEfectivoLineChart: ChartConfiguration<'line'>['data'] = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          label: 'Peso efectivo',
+          fill: false, // Set fill to false to hide the area below the line
+          tension: 0.5,
+          borderColor: '#39AFAC', // Change the border color to match the area below
+          backgroundColor: '#39AFAC' // Keep the background color the same
+        }
+      ]
+    };
+    public volumenTotalLineChart: ChartConfiguration<'line'>['data'] = {
+      labels: [],
+      datasets: [
+        {
+          data: [],
+          label: 'Total volume',
+          fill: false, // Set fill to false to hide the area below the line
+          tension: 0.5,
+          borderColor: '#39AFAC', // Change the border color to match the area below
+          backgroundColor: '#39AFAC' // Keep the background color the same
+        }
+      ]
+    };
+    public lineChartOptions: ChartOptions<'line'> = {
+      scales: {
+        y: {
+          suggestedMin: 0,  // Set the minimum value to 0
+          suggestedMax: 50,  // Set the maximum value to 100 units higher than the maximum value in your data
+        }
+      },
+      responsive: false
+    };
+    public lineChartLegend = false;
+  
+
+
   getTotalVolume(data: { volumenTotal: { name: string, value: string }[] }): number {
     return data.volumenTotal.reduce((total, entry) => total + parseInt(entry.value), 0);
   }
@@ -303,7 +359,9 @@ export class EstadisticasEjercicioPage implements OnInit {
     return data;
   }
 
-  constructor(private router: Router) { }
+  constructor(private router: Router) { 
+    addIcons({arrowBack});
+  }
 
   ngOnInit() {
 
@@ -314,6 +372,21 @@ export class EstadisticasEjercicioPage implements OnInit {
     // Calculate the total volume of the exercise
     this.kgsMovidos = this.getTotalVolume(this.ejercicio);
 
+    // Calculate the expected max
+    //TODO: Implement the formula to calculate the expected max
+
+    // Fill the graph data
+    this.repMaxLineChart.datasets[0].data = this.ejercicio.repeticionMaxima.map((entry: { name: string, value: string }) => Number(entry.value));
+    this.repMaxLineChart.labels = Array(this.ejercicio.repeticionMaxima.length).fill('');
+    console.log(this.repMaxLineChart.datasets[0].data);
+
+    this.pesoEfectivoLineChart.datasets[0].data = this.ejercicio.pesoEfectivo.map((entry: { name: string, value: string }) => Number(entry.value));
+    this.pesoEfectivoLineChart.labels = Array(this.ejercicio.pesoEfectivo.length).fill('');
+    console.log(this.pesoEfectivoLineChart.datasets[0].data);
+
+    this.volumenTotalLineChart.datasets[0].data = this.ejercicio.volumenTotal.map((entry: { name: string, value: string }) => Number(entry.value));
+    this.volumenTotalLineChart.labels = Array(this.ejercicio.volumenTotal.length).fill('');
+    console.log(this.volumenTotalLineChart.datasets[0].data);
   }
 
 }

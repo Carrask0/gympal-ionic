@@ -40,3 +40,16 @@
     font-size: 1em;
     color: white;
 }
+
+.graph-container {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.graph-container p {
+    text-align: center; /* Center the text */
+    font-size: 1em; /* Reduce the font size */
+}

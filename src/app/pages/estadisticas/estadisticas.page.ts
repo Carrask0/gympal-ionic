@@ -2,8 +2,6 @@ import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { VerticalBarChartComponent } from 'src/app/common/vertical-bar-chart/vertical-bar-chart.component';
-import { LineChartComponent } from 'src/app/common/line-chart/line-chart.component';
 import { addIcons } from 'ionicons';
 import { arrowBack } from 'ionicons/icons';
 import { RouterModule } from '@angular/router';
@@ -19,11 +17,9 @@ import { BaseChartDirective } from 'ng2-charts';
   templateUrl: './estadisticas.page.html',
   styleUrls: ['./estadisticas.page.scss'],
   standalone: true,
-  imports: [IonicModule, CommonModule, FormsModule, VerticalBarChartComponent, LineChartComponent, RouterModule, BaseChartDirective],
+  imports: [IonicModule, CommonModule, FormsModule, RouterModule, BaseChartDirective],
 })
 export class EstadisticasPage implements OnInit{
-  title = 'ng2-charts-demo';
-
 
   //data
   exercises: any[] = [
@@ -115,18 +111,6 @@ export class EstadisticasPage implements OnInit{
   //ngdata
   public lineChartData: ChartConfiguration<'line'>['data'] = {
     labels: [
-      'January',
-      'February',
-      'March',
-      'April',
-      'May',
-      'June',
-      'July',
-      'August',
-      'September',
-      'October',
-      'November',
-      'December'
     ],
     datasets: [
       {
@@ -143,14 +127,15 @@ export class EstadisticasPage implements OnInit{
   public lineChartOptions: ChartOptions<'line'> = {
     scales: {
       y: {
-        beginAtZero: true
+        suggestedMin: 0,  // Set the minimum value to 0
+        suggestedMax: 50,  // Set the maximum value to 100 units higher than the maximum value in your data
       }
     },
     responsive: false
   };
   public lineChartLegend = false;
 
-  extractValues(graphData: any[]): number[] {
+  fillGraphData(graphData: any[]): number[] {
     const output: number[] = [];
   
     // Check if graphData exists and has at least one item
@@ -166,8 +151,12 @@ export class EstadisticasPage implements OnInit{
         }
       }
     }
-  
     return output;
+  }
+
+  fillGraphLabels(graphData: any[]): string[] {
+    // Fill as many labels as values exist with ''
+    return new Array(this.fillGraphData(graphData).length).fill('');
   }
 
   onClickExercise(ejercicioId: number) {
@@ -181,6 +170,7 @@ export class EstadisticasPage implements OnInit{
 
   ngOnInit() {
     console.log(this.graphData);
-    this.lineChartData.datasets[0].data = this.extractValues(this.graphData);
+    this.lineChartData.datasets[0].data = this.fillGraphData(this.graphData);
+    this.lineChartData.labels = this.fillGraphLabels(this.graphData);
   }
 }
