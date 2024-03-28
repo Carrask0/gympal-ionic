@@ -4,6 +4,7 @@ import { IonicModule } from '@ionic/angular';
 import { FormsModule } from '@angular/forms';
 import { addIcons } from 'ionicons';
 import { close } from 'ionicons/icons';
+import { MatDialogRef } from '@angular/material/dialog';
 
 
 @Component({
@@ -18,13 +19,15 @@ export class ModalAnadirEjercicioComponent  implements OnInit {
 
   onClickCloseIcon(){
     console.log("onClickCloseIcon")
+    this.dialogRef.close();
   }
 
   onClickAddExercise(){
     console.log("onClickAddExercise")
+    this.dialogRef.close();
   }
 
-  constructor() { 
+  constructor(private dialogRef: MatDialogRef<ModalAnadirEjercicioComponent>) { 
     addIcons({close});
   }
 
